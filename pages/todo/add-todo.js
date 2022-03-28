@@ -1,4 +1,10 @@
+import { Container } from "@mui/material"
+
 export default function AddTodo()
 {
-    return <div>ini add todo</div>
+    return (
+        <Container sx={{ width: '500px', marginTop: '20px' }}>
+            <p>test</p>
+        </Container>
+    )
 }

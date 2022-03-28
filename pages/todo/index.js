@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import {
   Container,
   TableContainer,
@@ -9,20 +10,27 @@ import {
   TableBody,
   Button,
 } from "@mui/material";
+import { Add } from "@mui/icons-material";
 import { useAtom } from "jotai";
 import { todo, deleteTodoAtom } from "../../store";
 
 export default function Todo() {
   const [data] = useAtom(todo);
   const [, deleteTodo] = useAtom(deleteTodoAtom);
+  const route = useRouter();
 
   const handleDeleteTodo = (id) => {
     deleteTodo(id);
   };
 
+  const handleAdd = () => {
+      route.push('/todo/add-todo');
+  }
+
   return (
     <Container maxWidth="xl">
-      <TableContainer component={Paper}>
+      <Button variant="contained" startIcon={<Add />} sx={{ marginTop: '20px' }} onClick={() => handleAdd()}>Add New</Button>
+      <TableContainer component={Paper} sx={{ marginTop: '20px' }}>
         <Table>
           <TableHead>
             <TableRow>
